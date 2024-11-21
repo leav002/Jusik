@@ -182,10 +182,10 @@ public class Main {
             double changePercent = stockMarket.stocks[i].changeper();
             int haves = ac.havehave(i); // 보유 수량 가져오기
             double stockMoney = (stk != null) ? stk.getstockmoney() : 0; // stk가 null인 경우 0으로 설정
-            double totalbuycost;
+            double totalbuycost = (stk != null) ? stk.nowvalue() : 0;//todo : 여기를 만들어야한다.
 
             stockList.append(i + 1 + ". " + stockMarket.stocks[i].name + ": 현재가 " + stockMarket.stocks[i].nowprice
-                    + "원 (변동률: " + String.format("%.2f", changePercent) + "%, 보유 수량: " + haves + " 수익 : " + stockMoney + " 총 구매가격 : " + ")\n");
+                    + "원 (변동률: " + String.format("%.2f", changePercent) + "%, 보유 수량: " + haves + " 수익 : " + stockMoney + " 총 구매가격 : " + totalbuycost + ")\n");
         }
     }
 
