@@ -15,7 +15,7 @@ public class Trade {
             }else{
                 System.out.println("잔고가 부족합니다.");
             }
-        } else { // 펄스일 때 판매
+        } else { // 펄스일 때 판매.
             int ownedAmount = ac.havehave(stockIndex);
             if (ownedAmount >= amount) {
                 ac.sellStock(stockIndex, amount);
