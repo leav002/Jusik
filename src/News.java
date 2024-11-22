@@ -1,8 +1,10 @@
-import java.util.Random;
+import java.util.*;
+import java.io.*;
 
 public class News {
     private String currentNews; // 생선된 뉴스 문구를 저장한다.
     private boolean GenNews = false; // 뉴스 생성 여부 판단.
+
 
     private String[] who = { "테슬라", "애플", "구글", "삼성", "아마존", "네이버", "카카오", "토스", "마이크로소프트", "페이스북" };
     private String[] when = { "오늘", "어제", "이번 주", "올해", "최근 분기" };
@@ -36,5 +38,9 @@ public class News {
     public void newDay() {
         GenNews = false; // 새로운 날이 되면 뉴스가 없는걸로 바뀌고 새로운 뉴스를 만들도록 한다.
         System.out.println("다음 날로 넘어갑니다.");
+    }
+
+    public void newsImpact(){
+
     }
 }

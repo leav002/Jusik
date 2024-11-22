@@ -47,8 +47,8 @@ public class Main {
                     if (savefac < 0) {
                         JOptionPane.showMessageDialog(frame, "계좌 잔고는 0보다 커야 합니다."); // 0보다 작으면 오류 메세지 출력
                     } else {
-                        ac = new Account(stockMarket.stocks.length, savefac);
-                        zeroac.setText(String.valueOf(ac.account));
+                        ac = new Account(stockMarket.stocks.length, savefac); // 수정된 생성자 호출
+                        zeroac.setText(String.valueOf(ac.account)); // 잔고 업데이트
                         updateStockList(); // 주식 목록 갱신
                         JOptionPane.showMessageDialog(frame, "계좌가 생성되었습니다. 잔고: " + ac.account);
                     }
@@ -57,6 +57,7 @@ public class Main {
                 }
             }
         });
+
 
         // 주식 목록 출력 영역
         stockList = new JTextArea(10, 30);
@@ -171,23 +172,28 @@ public class Main {
     private void updateStockList() {
         stockList.setText("구매 가능한 주식 목록:\n");
 
-        // Account 객체가 생성되지 않았을 경우에는 주식 목록을 업데이트하지 않음
+        // Account 객체가 없을 경우 메시지 출력
         if (ac == null) {
             stockList.append("계좌를 생성한 후 주식 목록을 볼 수 있습니다.\n");
             return;
         }
 
-        // 계좌가 생성되었다면 주식 목록과 보유 수량을 출력
+        // 계좌가 생성되었을 때 주식 목록 갱신
         for (int i = 0; i < stockMarket.stocks.length; i++) {
-            double changePercent = stockMarket.stocks[i].changeper();
-            int haves = ac.havehave(i); // 보유 수량 가져오기
-            double stockMoney = (stk != null) ? stk.getstockmoney() : 0; // stk가 null인 경우 0으로 설정
-            double totalbuycost = (stk != null) ? stk.nowvalue() : 0;//todo : 여기를 만들어야한다.
+            Abstock currentStock = stockMarket.stocks[i];
+            double changePercent = currentStock.changepersent(); // 변동률 계산
+            int ownedAmount = ac.havehave(i); // 보유 수량
 
-            stockList.append(i + 1 + ". " + stockMarket.stocks[i].name + ": 현재가 " + stockMarket.stocks[i].nowprice
-                    + "원 (변동률: " + String.format("%.2f", changePercent) + "%, 보유 수량: " + haves + " 수익 : " + stockMoney + " 총 구매가격 : " + totalbuycost + ")\n");
+            // 보유 수익 및 총 구매 가격
+            double profitOrLoss = (currentStock.nowprice - currentStock.yesprice) * ownedAmount;
+            double totalValue = currentStock.nowprice * ownedAmount;
+
+            stockList.append(i + 1 + ". " + currentStock.name + ": 현재가 " + currentStock.nowprice +
+                    "원 (변동률: " + String.format("%.2f", changePercent) + "%, 보유 수량: " + ownedAmount +
+                    ", 수익: " + String.format("%.2f", profitOrLoss) + "원, 총 가치: " + String.format("%.2f", totalValue) + "원)\n");
         }
     }
+
 
 
     private void updateNews() {
