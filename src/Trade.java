@@ -1,12 +1,13 @@
+
 public class Trade {
 
     public void doTrade(int stockIndex, int amount, StockMarket stockMarket, Account ac, boolean BorS){
 
-        Abstock stock = stockMarket.stocks[stockIndex];
+        AbStock stock = stockMarket.stocks[stockIndex];
 
         if(BorS){ //불린값이 트루일때 구매를 진행한다.
             double totalCost = stock.nowprice * amount;
-            
+
             if(ac.account >= totalCost){
                 ac.account -= totalCost;
                 ac.buyStock(stockIndex,amount);

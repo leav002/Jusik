@@ -1,9 +1,10 @@
+
 public class StockMarket {
 
-    public Abstock[] stocks;
+    public AbStock[] stocks;
 
     public StockMarket(){
-        stocks = new Abstock[10]; //종목의 수를 지정한다.
+        stocks = new AbStock[10]; //종목의 수를 지정한다.
         setStock();
     }
 
@@ -19,9 +20,10 @@ public class StockMarket {
         stocks[8] = new StockStock("SAMSUNG", 8000, 8000); // 이름, 전일가, 현재가
         stocks[9] = new StockStock("KAKAO", 5000, 5000); // 이름, 전일가, 현재가
     }
-
+    //TODO : 혹시 이거 종목 그냥 파일처리해서 기업 도산하면 새거 나오게 나오게 하고 그런거 되냐
+    //되긴 할텐데 못했다. 시간 없다.
     public void updateMarket(){ //주식의 가격을 업데이트 하는 메소드
-        for(Abstock stock : stocks){
+        for(AbStock stock : stocks){
             stock.changeStockvalue();
         }
     }
