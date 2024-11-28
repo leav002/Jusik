@@ -6,7 +6,7 @@ public class Trade {
 
         if(BorS){ //불린값이 트루일때 구매를 진행한다.
             double totalCost = stock.nowprice * amount;
-            
+
             if(ac.account >= totalCost){
                 ac.account -= totalCost;
                 ac.buyStock(stockIndex,amount);
