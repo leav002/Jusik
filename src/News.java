@@ -1,5 +1,6 @@
+
+
 import java.util.*;
-import java.io.*;
 
 public class News {
     private String currentNews; // 생선된 뉴스 문구를 저장한다.
@@ -16,7 +17,6 @@ public class News {
     private String[] why = { "경쟁에서 앞서기 위해", "시장 점유율을 확대하기 위해", "기술 리더십을 유지하기 위해", "신규 고객을 확보하기 위해", "주가 상승을 견인하기 위해",
             "주주 가치를 극대화하기 위해", "장기적인 성장 전략의 일환으로" };
 
-    // 위에 있는 뭔가 쓸데없이 길어보이는 단어들을 조합하여 뉴스 문장을 만든다.(뉴스의 어떤 특정 키워드에 반응하여 가격변동에 영향을 주는거 만들고 싶은데 아직 구현 못함)
 
     public String getDailyNews() { // 이곳에서 단어들을 조합하여 뉴스를 생성한다.
         if (!GenNews) {
@@ -41,6 +41,5 @@ public class News {
     }
 
     public void newsImpact(){
-
     }
 }

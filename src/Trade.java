@@ -1,4 +1,5 @@
 
+
 public class Trade {
 
     public void doTrade(int stockIndex, int amount, StockMarket stockMarket, Account ac, boolean BorS){

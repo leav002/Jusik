@@ -1,9 +1,11 @@
+
+
 public class StockMarket {
 
-    public Abstock[] stocks;
+    public AbStock[] stocks;
 
     public StockMarket(){
-        stocks = new Abstock[10]; //종목의 수를 지정한다.
+        stocks = new AbStock[10]; //종목의 수를 지정한다.
         setStock();
     }
 
@@ -19,9 +21,8 @@ public class StockMarket {
         stocks[8] = new StockStock("SAMSUNG", 8000, 8000); // 이름, 전일가, 현재가
         stocks[9] = new StockStock("KAKAO", 5000, 5000); // 이름, 전일가, 현재가
     }
-
     public void updateMarket(){ //주식의 가격을 업데이트 하는 메소드
-        for(Abstock stock : stocks){
+        for(AbStock stock : stocks){
             stock.changeStockvalue();
         }
     }
